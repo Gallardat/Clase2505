@@ -1,15 +1,15 @@
 package com.softtek.hibernate.modelo;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "escuderias")
 public class Escuderia {
@@ -24,7 +24,7 @@ public class Escuderia {
     @Column(length = 20,nullable = false)
     private String pais;
 
-    @OneToMany(mappedBy = "escuderia",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "escuderia",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<Piloto> pilotos;
 
 

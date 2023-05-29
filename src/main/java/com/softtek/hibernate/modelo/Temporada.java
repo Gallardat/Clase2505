@@ -1,17 +1,16 @@
 package com.softtek.hibernate.modelo;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
-@Data
+
 @NoArgsConstructor
 @Entity
+@Getter
+@Setter
 @Table(name = "temporadas")
 @Component
 public class Temporada {
@@ -24,7 +23,7 @@ public class Temporada {
 
     private int fin;
     @ToString.Exclude
-    @ManyToMany(mappedBy="temporadas", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy="temporadas", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Piloto> pilotos;
 
 }

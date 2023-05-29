@@ -13,12 +13,6 @@ import java.util.List;
 @Repository
 public interface IPilotoRepo extends JpaRepository<Piloto, Long> {
 
-
-    @Query( " from Piloto p")
-    List<Piloto> obtenerPilotos();
-
-
-
     //Mostrar los pilotos de una escuderia
     @Query("from Piloto p where p.escuderia.idEcuderia=:escuderia")
     List<Piloto> mostrarPorEscuderia(@Param("escuderia") Long escuderia);

@@ -1,16 +1,15 @@
 package com.softtek.hibernate.modelo;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Set;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "telefonos")
 public class Telefono {
@@ -21,7 +20,6 @@ public class Telefono {
 
     private long numero;
 
-    @ToString.Exclude
     @ManyToOne
          @JoinColumn(name = "id_piloto",nullable = false,
          foreignKey = @ForeignKey(name = "fk_telefono_piloto"))

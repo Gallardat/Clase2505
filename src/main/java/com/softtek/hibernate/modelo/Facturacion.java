@@ -1,14 +1,14 @@
 package com.softtek.hibernate.modelo;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@ToString(onlyExplicitlyIncluded = false)
 @Entity
 @Table(name="facturaciones")
 public class Facturacion {
@@ -20,7 +20,8 @@ public class Facturacion {
     private int sueldo;
 
     private int publicidad;
-    @ToString.Exclude
-    @OneToOne(mappedBy = "facturacion",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+
+    @OneToOne(mappedBy = "facturacion",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     Piloto piloto;
 }

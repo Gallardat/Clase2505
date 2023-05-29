@@ -1,17 +1,16 @@
 package com.softtek.hibernate.modelo;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.web.JsonPath;
 
 import java.util.Set;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @ToString(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name="pilotos")
@@ -25,6 +24,8 @@ public class Piloto {
     private String nombrePiloto;
 
     private int edad;
+
+
     @OneToOne
     @JoinColumn(name="id_facturacion", nullable=false,
             foreignKey = @ForeignKey(name="fk_piloto_facturacion"))
@@ -39,10 +40,12 @@ public class Piloto {
     @JoinColumn(name="id_escuderia", nullable=false,
             foreignKey=@ForeignKey(name="fk_piloto_escuderia"))
     Escuderia escuderia;
-    @OneToMany(mappedBy="pilotos", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+
+
+    @OneToMany(mappedBy="pilotos", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private Set<Telefono> telefonos;
 
-    @ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     @JoinTable(name = "temporadas_pilotos",
             joinColumns=@JoinColumn(name = "id_piloto", referencedColumnName = "idPiloto"),
             inverseJoinColumns = @JoinColumn(name = "id_temporada", referencedColumnName ="idTemporada"))

@@ -6,22 +6,15 @@ import com.softtek.hibernate.repositorio.IPilotoRepo;
 import com.softtek.hibernate.repositorio.ITemporadaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+@Service
 public class IPilotoSer implements IPilotoServicio {
 
     @Autowired
     IPilotoRepo pilotoRepo;
-
-
-
-    @Override
-    public void obtenerPilotos() {
-    List<Piloto> pilotos = pilotoRepo.obtenerPilotos();
-    pilotos.forEach(System.out::println);
-    }
 
     @Override
     public List<Piloto> mostrarPorEscuderia(Long escuderia) {

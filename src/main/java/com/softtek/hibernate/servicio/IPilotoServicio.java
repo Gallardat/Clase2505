@@ -11,10 +11,6 @@ import java.util.List;
 @Component
 public interface IPilotoServicio {
 
-
-
-    void obtenerPilotos();
-
     List<Piloto> mostrarPorEscuderia( Long escuderia);
     List<Piloto> mostrarSueldo();
     List<Piloto> mostrarPublicidad( Integer valor1, Integer valor2);

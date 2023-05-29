@@ -12,8 +12,7 @@ import java.util.Optional;
 @Repository
 public interface ITemporadaRepo extends JpaRepository<Temporada, Long> {
 
-    //Mostrar los pilotos  que pertenecer a  una determinada temporada
-   Optional<Temporada> findTemporadaBy(long temporada);
+
 
 }
 
